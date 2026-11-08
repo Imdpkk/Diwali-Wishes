@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#160d2b" />
+  <meta name="description" content="A little light, a lot of happiness. An interactive Diwali greeting from Deepak Vishwakarma." />
+  <title>Shubh Deepawali | Deepak Vishwakarma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <canvas id="fireworks" aria-hidden="true"></canvas>
+  <audio id="diwaliMusic" src="Music.mp3" loop preload="auto" autoplay></audio>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="brand load-reveal" href="#top" aria-label="Deepak Vishwakarma home"><span class="brand-mark">D</span><span>Deepak <i>VISHWAKARMA</i></span></a>
+      <button class="music-button" id="musicButton" type="button" aria-pressed="false"><span class="sound-icon">♪</span><span id="musicLabel">Play music</span></button>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="floating-lamp lamp-left" aria-hidden="true"><span>🪔</span></div>
+      <div class="floating-lamp lamp-right" aria-hidden="true"><span>🪔</span></div>
+      <div class="marquee load-reveal" aria-label="Festival of lights">
+        <div class="marquee-track"><span>✦ FESTIVAL OF LIGHTS ✦ DIWALI JOY ✦ शुभ दीपावली ✦ FESTIVAL OF LIGHTS ✦ DIWALI JOY ✦ शुभ दीपावली ✦</span><span aria-hidden="true">✦ FESTIVAL OF LIGHTS ✦ DIWALI JOY ✦ शुभ दीपावली ✦ FESTIVAL OF LIGHTS ✦ DIWALI JOY ✦ शुभ दीपावली ✦</span></div>
+      </div>
+      <p class="sanskrit load-reveal">॥ शुभ दीपावली ॥</p>
+      <h1 class="load-reveal">Happy Diwali,<br><em>with love & light.</em></h1>
+      <p class="intro reveal-text">May your home glow with happiness, your heart dance with joy, and every new day bring hope.</p>
+
+      <div class="diya-stage" id="diyaStage">
+        <div class="halo"></div>
+        <div class="spark spark-a"></div><div class="spark spark-b"></div><div class="spark spark-c"></div>
+        <div class="flame-wrap" id="flameWrap"><div class="flame-outer"></div><div class="flame-inner"></div></div>
+        <div class="wick"></div>
+        <div class="diya"><div class="diya-rim"></div><div class="diya-body"><span class="diya-pattern">✦　　✦</span></div><div class="diya-base"></div></div>
+        <p class="diya-caption" id="diyaCaption">Tap the diya to spread the light</p>
+      </div>
+
+      <div class="hero-actions">
+        <button class="primary-button" id="lightButton" type="button">Light the diya <span>✦</span></button>
+        <button class="text-button" id="fireworkButton" type="button">Celebrate with fireworks ↗</button>
+      </div>
+    </section>
+
+    <section class="wish-card" aria-live="polite">
+      <div class="card-ornament">✧</div>
+      <p class="card-kicker load-reveal">A LITTLE WISH FOR YOU</p>
+      <h2 id="personalWish" class="reveal-text">Wishing you a very Happy Diwali</h2>
+      <p class="reveal-text">May every diya you light bring smiles, peace, good health, and beautiful moments with the people you love.</p>
+      <div class="card-footer load-reveal"><span></span> WITH WARM WISHES <span></span></div>
+    </section>
+
+    <section class="personalize" id="personalize">
+      <div class="section-heading"><p class="card-kicker load-reveal">SHARE THE JOY</p><h2>Send this light<br><em>to someone special.</em></h2></div>
+      <form id="nameForm" class="name-form">
+        <label for="visitorName">Create a personal Diwali wish</label>
+        <div class="input-row"><span class="input-icon">✦</span><input id="visitorName" name="name" type="text" maxlength="32" placeholder="Enter their name" autocomplete="name" /><button type="submit" aria-label="Personalize greeting">Create wish <span>→</span></button></div>
+        <p class="form-note">Their name will appear in the big greeting. Nothing is stored.</p>
+      </form>
+      <div class="share-row"><button class="outline-button" id="shareButton" type="button">Share this greeting ↗</button><button class="copy-button" id="copyButton" type="button">Copy link</button></div>
+      <p class="share-status" id="shareStatus" role="status"></p>
+    </section>
+
+    <footer class="footer"><p class="footer-wish">May your light never fade.</p><p class="signature">With warmth, <strong>Deepak Vishwakarma</strong></p></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
