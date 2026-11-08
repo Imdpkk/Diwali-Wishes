@@ -12,6 +12,8 @@ let musicOn = false;
 let particles = [];
 const diwaliMusic = document.getElementById('diwaliMusic');
 diwaliMusic.volume = 0.12;
+const musicButton = document.getElementById('musicButton');
+const musicLabel = document.getElementById('musicLabel');
 
 function revealText(element, delay = 0){
   const text = element.textContent;
@@ -131,15 +133,29 @@ personalizeFromUrl();
 function tryAutoplay(){
   diwaliMusic.play().then(()=>{
     musicOn = true;
+    musicButton.setAttribute('aria-pressed','true');
+    musicLabel.textContent='Pause music';
   }).catch(()=>{
-    shareStatus.textContent='Soft Diwali music will begin after your first interaction.';
+    shareStatus.textContent='Tap Play music to enjoy the soft Diwali soundtrack.';
   });
 }
 window.addEventListener('load', tryAutoplay);
-['pointerdown', 'keydown', 'touchstart'].forEach((eventName) => {
-  window.addEventListener(eventName, () => {
-    if(!musicOn) tryAutoplay();
-  }, {once: true, passive: true});
+musicButton.addEventListener('click',()=>{
+  if(musicOn){
+    diwaliMusic.pause();
+    musicOn = false;
+    musicLabel.textContent='Play music';
+    musicButton.setAttribute('aria-pressed','false');
+    return;
+  }
+  diwaliMusic.play().then(()=>{
+    musicOn = true;
+    musicLabel.textContent='Pause music';
+    musicButton.setAttribute('aria-pressed','true');
+    shareStatus.textContent='Soft Diwali music is playing.';
+  }).catch(()=>{
+    shareStatus.textContent='Music could not be played. Please try again.';
+  });
 });
 document.getElementById('shareButton').addEventListener('click',async()=>{
   const url=currentShareUrl();
